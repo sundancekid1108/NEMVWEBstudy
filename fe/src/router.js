@@ -26,6 +26,12 @@ export default new Router({
             name: 'help',
             component: () =>
                 import ( /* webpackChunkName: "about" */ './views/Help.vue')
+        },
+        {
+            path: '*',
+            name: 'e404',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/E404.vue')
         }
     ]
 })

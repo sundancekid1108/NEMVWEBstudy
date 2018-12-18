@@ -82,20 +82,6 @@ export default {
       items: [{
         icon: 'bubble_chart',
         title: 'Inspire'
-      },
-      {
-        icon: 'face',
-        title: 'about',
-        to:{
-          path: '/about'
-        }
-      },
-      {
-        icon: 'help',
-        title: 'help',
-        to:{
-          path: '/help'
-        }
       }],
       miniVariant: false,
       right: true,

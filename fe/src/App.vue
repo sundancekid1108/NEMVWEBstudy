@@ -82,6 +82,10 @@ export default {
       items: [{
         icon: 'bubble_chart',
         title: 'Inspire'
+      },
+      {
+        icon: 'home',
+        title: 'user'
       }],
       miniVariant: false,
       right: true,

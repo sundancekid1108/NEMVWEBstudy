@@ -81,16 +81,18 @@ export default {
       fixed: false,
       items: [{
         icon: 'bubble_chart',
-        title: 'Inspire'
+        title: 'Inspire',
+        to: 'about'
       },
       {
         icon: 'home',
-        title: 'user'
+        title: 'user',
+        to: 'user'
       }],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: '스터디'
     }
   }
 }

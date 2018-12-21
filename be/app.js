@@ -38,15 +38,50 @@ app.use(function(err, req, res, next) {
     res.send({ msg: err.message })
 });
 
-mongoose.connect('mongodb://localhost:27017/nemv', (err) => {
-    if (err) return console.error(err)
-    console.log('mongoose connected!')
-});
-
 const userSchema = new mongoose.Schema({
     name: { type: String, default: '', unique: true, index: true },
     age: { type: Number, default: 1 }
 })
+
+const User = mongoose.model('User', userSchema)
+    //스키마
+
+mongoose.connect('mongodb://localhost:27017/nemv', (err) => {
+    if (err) return console.error(err)
+    console.log('mongoose connected!')
+
+    //User.create({ name: '하하하' })
+    //    .then(r => console.log(r))
+    //    .catch(e => console.log(e))
+
+    //User.find()
+    //    .then(r => console.log(r))
+    //    .catch(e => console.log(e))
+
+    //User.updateOne({ _id: '5c1c5f35ea40937042048feb' }, { $set: { age: 34 } })
+    //    .then(r => {
+    //        console.log(r)
+    //        console.log('updated')
+    //        return User.find()
+    //    })
+    //    .then(r => console.log(r))
+    //    .catch(e => console.error(e))
+
+    User.deleteOne({ _id: '5c1c5f35ea40937042048feb' })
+        .then(r => {
+            console.log(r)
+            console.log('removed')
+            return User.find()
+        })
+        .then(r => console.log(r))
+        .catch(e => console.error(e))
+        // delete할때는 reference참조하면서 해라 안그러면 DB 다 날릴수 있음..
+
+}); // then, catch를 이용해서 사용 => promise chain, user.find => 프로미스로 리턴..
+
+
+
+
 
 
 module.exports = app;

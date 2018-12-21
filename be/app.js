@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require('mongoose');
 var app = express();
 const cors = require('cors') // 상단 아무곳이나 추가
 
@@ -37,5 +37,16 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.send({ msg: err.message })
 });
+
+mongoose.connect('mongodb://localhost:27017/nemv', (err) => {
+    if (err) return console.error(err)
+    console.log('mongoose connected!')
+});
+
+const userSchema = new mongoose.Schema({
+    name: { type: String, default: '', unique: true, index: true },
+    age: { type: Number, default: 1 }
+})
+
 
 module.exports = app;
